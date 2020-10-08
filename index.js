@@ -1,8 +1,10 @@
 function addItem(){
+  /* Stop the default form submission*/
   $('#js-shopping-list-form').submit(function(event){
       event.preventDefault();
-      console.log("Hello World");
+      /*assign a constant variabe to find the value of text entered */
       const entryItem=$('#shopping-list-entry').val();
+      /*Create a data-item-id atrribute for each shopping lust item */
       const liItem=`<li>
       <span class="shopping-item" data-id=${cuid()}>${entryItem}</span>
       <div class="shopping-item-controls">
@@ -14,7 +16,7 @@ function addItem(){
         </button>
       </div>
     </li>`;
-   
+    /*Add the list item to the end of the list */   
     $('.shopping-list').append(liItem);
     checkItem();
     deleteItem();
@@ -25,6 +27,7 @@ function getSpanId(spanElement)
 {
 return spanElement.closest('li').children('span').data("id") 
 }
+/*Uncheck item */
 
 function uncheckItem(button, spanId)
 {
@@ -36,7 +39,7 @@ button.click(function ()
   checkItem();
 }) 
 }
-
+/*Check item */
 function checkItem(){
 $(".shopping-item-toggle").click(function (event) {
   let spanId = getSpanId($(this));
@@ -45,7 +48,7 @@ $(".shopping-item-toggle").click(function (event) {
  
 })
 }
-
+/*Remove item*/
 function deleteItem()
 {
 $(".shopping-item-delete").click(function(){
